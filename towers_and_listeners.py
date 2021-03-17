@@ -16,7 +16,7 @@ position 15 to reach the listener at position 20.
 
 """
 
-
+BIG_UNREACHABLE_DISTANCE = 1001
 
 def find_min_range(listeners_array, towers_array):
     listeners_array = sorted(listeners_array)
@@ -28,9 +28,10 @@ def find_min_range(listeners_array, towers_array):
 
     current_chosen_tower_id = 0
 
+    # iterate every listener and find min distance to cover they with towers
     for listener_id, listener_coord in enumerate(listeners_array):
 
-        distance_to_previously_chosen_tower = 1001
+        distance_to_previously_chosen_tower = BIG_UNREACHABLE_DISTANCE
         distance_to_current_chosen_tower = abs(towers_array[current_chosen_tower_id] - listener_coord)
 
         # while every next tower is closer to user
@@ -52,7 +53,7 @@ def find_min_range(listeners_array, towers_array):
         # so next listener is measured from the found tower
         current_chosen_tower_id -= 1
 
-    print(min_distance_to_cover_listener)
+    # print(min_distance_to_cover_listener)
     return max(min_distance_to_cover_listener)
 
 
