@@ -16,6 +16,17 @@ position 15 to reach the listener at position 20.
 
 """
 
+"""
+My algorithm: 
+1) Sort listeners and towers location arrays. Sorting complexity - for listeners O(NlogN), for towers O(MlogM)
+2) Iterate over every listener and tower to find min distance to cover every listener. Complexity O(N+M)
+3) find max distance through the array of min distances to every listener - this is result. Complexity O(N)
+
+Overall complexity max of O(NlogN) and O(MlogM)
+
+"""
+
+# bigger than from 0 (west) to 1000 (east)
 BIG_UNREACHABLE_DISTANCE = 1001
 
 def find_min_range(listeners_array, towers_array):
@@ -28,7 +39,7 @@ def find_min_range(listeners_array, towers_array):
 
     current_chosen_tower_id = 0
 
-    # iterate every listener and find min distance to cover they with towers
+    # iterate through every listener and find min distance to cover they with towers
     for listener_id, listener_coord in enumerate(listeners_array):
 
         distance_to_previously_chosen_tower = BIG_UNREACHABLE_DISTANCE
